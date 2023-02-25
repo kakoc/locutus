@@ -8,6 +8,17 @@ on:
     branches: [main]
     paths-ignore: ["docs/**", "README.md"]
 
+# - uses: Swatinem/rust-cache@v2
+#   with:
+#     workspaces: |
+#       crates/locutus-core
+#       crates/locutus-dev
+#       crates/locutus-macros
+#       crates/locutus-node
+#       crates/locutus-runtime
+#       crates/locutus-stdlib
+#       . -> target
+
 jobs:
   test_all:
     name: Test features
@@ -44,7 +55,7 @@ jobs:
       - name: Build
         run: |
           cargo build --locked 
-          cargo install --path ./crates/locutus-node
+          # cargo install --path ./crates/locutus-node
 
       - name: Add dependencies
         run: |
